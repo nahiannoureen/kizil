@@ -8,52 +8,37 @@ export default function ProductCard({
   colors = [],
 }) {
   return (
-    <div className="w-full">
-      {/* Image */}
-      <div className="overflow-hidden rounded-xl bg-[#F8F8F8]">
+    <div className="group">
+      <div className="overflow-hidden rounded-lg bg-[#F8F8F8]">
         <img
           src={image}
           alt={title}
-          className="h-[354px] w-full object-cover transition duration-500 hover:scale-105"
+          className="h-[320px] w-full object-cover transition duration-500 group-hover:scale-105"
         />
       </div>
 
-      {/* Product Info */}
-      <div className="mt-4">
-        <h3 className="font-urbanist text-[18px] font-semibold leading-6 text-[#161616]">
-          {title}
-        </h3>
+      <h3 className="mt-4 text-[18px] font-semibold text-[#161616]">{title}</h3>
 
-        {/* Color Swatches */}
-        <div className="mt-3 flex items-center gap-2">
-          {colors.map((color, index) => (
-            <span
-              key={index}
-              className="h-5 w-5 rounded-full border border-gray-300"
-              style={{ backgroundColor: color }}
-            />
-          ))}
-        </div>
-
-        {/* Price */}
-        <div className="mt-3 flex items-center gap-2">
-          <span className="font-urbanist text-[20px] font-bold text-[#161616]">
-            ৳ {price}
-          </span>
-
-          {oldPrice && (
-            <span className="text-sm text-gray-400 line-through">
-              ৳ {oldPrice}
-            </span>
-          )}
-        </div>
-
-        {/* Add to Cart */}
-        <button className="mt-4 flex h-11 w-full items-center justify-center gap-2 rounded-md bg-[#161616] text-sm font-medium text-white transition hover:bg-black">
-          <FiShoppingCart size={16} />
-          Add To Cart
-        </button>
+      <div className="mt-3 flex gap-2">
+        {colors.map((color, index) => (
+          <span
+            key={index}
+            className="h-5 w-5 rounded-full border"
+            style={{ backgroundColor: color }}
+          />
+        ))}
       </div>
+
+      <div className="mt-3 flex items-center gap-3">
+        <span className="text-[30px] font-bold">৳ {price}</span>
+
+        <span className="text-gray-400 line-through">৳ {oldPrice}</span>
+      </div>
+
+      <button className="mt-5 flex w-full items-center justify-center gap-2 rounded bg-[#161616] py-3 text-white transition hover:bg-black">
+        <FiShoppingCart />
+        Add To Cart
+      </button>
     </div>
   );
 }
